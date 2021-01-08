@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
+
 module.exports = {
   mode: 'development',
   entry: './src/index.tsx',
@@ -8,6 +11,9 @@ module.exports = {
   },
 
   resolve: {
+    alias: {
+      '@src': path.resolve(__dirname, 'src')
+    },
     extensions: ['.ts', '.tsx', '.js']
   },
   module: {
@@ -20,6 +26,22 @@ module.exports = {
         test: /\.js?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'react-svg-loader'
+          }
+        ]
       }
     ]
   },

@@ -17,5 +17,13 @@ module.exports = {
     react: {
       version: 'detect'
     }
-  }
+  },
+  overrides: [
+    {
+      files: ['**/*.tsx', '**/*.ts'],
+      rules: {
+        'react/prop-types': 'off'
+      }
+    }
+  ]
 };
